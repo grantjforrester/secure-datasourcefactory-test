@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+	<!-- Regular connection to Postgres -->
+	<!-- <Resource name="jdbc/mydatabase" auth="Container"
+		type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+  		url="jdbc:postgresql://192.168.99.100:5432/test"
+  		maxActive="20" maxIdle="10" maxWait="-1"
+  		username="postgres" password="mysecretpassword"  
+	/>-->
+
+	<!-- Secured connection to Postgres -->
+	<Resource name="jdbc/mydatabase" auth="Container"
+		factory="com.ncr.tomcat.SecureDataSourceFactory"
+		type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+  		url="jdbc:postgresql://192.168.99.100:5432/test"
+  		maxActive="20" maxIdle="10" maxWait="-1"
+  		username="postgres" password="3Tna4dprfUEcUwk8mf/3CGbRdd5ayB3VXpVn00nIuSk=" 
+		connectionProperties="algorithm=AES;mode=ECB;padding=PKCS5PADDING;keyFilename=C:\\NCRDev\\workspace\\secure-datasourcefactory-test\\AES-128.key"
+	/>
+	
+	<!-- Regular connection to Oracle -->
+	<!-- <Resource name="jdbc/mydatabase" auth="Container"
+		type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver" 	 
+		url="jdbc:oracle:thin:@192.168.99.100:1521:xe" 
+		maxActive="20" maxIdle="10" maxWait="-1"  
+		username="test"	password="mysecretpassword" 
+	/> -->
+	
+	<!-- Secured connection to Oracle -->
+	<!--  <Resource name="jdbc/mydatabase" auth="Container" 
+		factory="com.ncr.tomcat.SecureDataSourceFactory" 
+		type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver" 	 
+		url="jdbc:oracle:thin:@192.168.99.100:1521:xe" 
+		maxActive="20" maxIdle="10" maxWait="-1" 
+		username="test"	password="3Tna4dprfUEcUwk8mf/3CGbRdd5ayB3VXpVn00nIuSk=" 
+		connectionProperties="algorithm=AES;mode=ECB;padding=PKCS5PADDING;keyFilename=C:\\NCRDev\\workspace\\secure-datasourcefactory-test\\AES-128.key" 
+	/> -->
+
+</Context>
