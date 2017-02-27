@@ -1,7 +1,7 @@
 Secure Tomcat DataSourceFactory Test
 ====================================
 
-The purpose of this project is to test the secure Tomcat datasource. The Maven project builds a very simple WAR file with a single servlet available at ``/secure-datasourcefactory-test/hello``.  The servlet expects a JNDI datasource ``jdbc/mydatabase``. The JNDI datasource is defined in the file [/src/main/webapp/META-INF/context.xml](src/main/webapp/META-INF/context.xml). This file contains a number of example configurations.
+The purpose of this project is to test the [secure Tomcat datasourcefactory](https://github.com/NCR-CoDE/secure-datasourcefactory). The Maven project builds a very simple WAR file with a single servlet available at ``/secure-datasourcefactory-test/hello``.  The servlet expects a JNDI datasource ``jdbc/mydatabase``. The JNDI datasource is defined in the file [/src/main/webapp/META-INF/context.xml](src/main/webapp/META-INF/context.xml). This file contains a number of example configurations.
 
 The servlet expects the connected database to contain a table named GREETING with the following content:
 
