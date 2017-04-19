@@ -13,7 +13,7 @@ The servlet expects the connected database to contain a table named GREETING wit
 Docker
 ------
 
-The folder [/docker](docker) contains a number of Docker files for creating different database containers pre-populated with the required data.  See [/docker/README.md](docker/README.md) fro details on how to build and run the containers. Currently available containers:
+The folder [/docker](docker) contains a number of Docker files for creating different database containers pre-populated with the required data.  See [/docker/README.md](docker/README.md) for details on how to build and run the containers. Currently available containers:
 
 * Postgres 9.6
 * Oracle 12c
