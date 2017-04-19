@@ -1,4 +1,4 @@
-package com.ncr.tomcat.test;
+package com.github.grantjforrester.tomcat;
 
 import java.io.IOException;
 import java.sql.Connection;

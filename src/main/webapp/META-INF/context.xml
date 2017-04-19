@@ -15,7 +15,7 @@
 
 	<!-- Secured connection to Postgres -->
 	<Resource name="jdbc/mydatabase" auth="Container"
-		factory="com.ncr.tomcat.SecureDataSourceFactory"
+		factory="com.github.ncredinburgh.tomcat.SecureDataSourceFactory"
 		type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
   		url="jdbc:postgresql://192.168.99.100:5432/test"
   		maxActive="20" maxIdle="10" maxWait="-1"
@@ -33,7 +33,7 @@
 	
 	<!-- Secured connection to Oracle -->
 	<!--  <Resource name="jdbc/mydatabase" auth="Container" 
-		factory="com.ncr.tomcat.SecureDataSourceFactory" 
+		factory="com.github.ncredinburgh.tomcat.SecureDataSourceFactory" 
 		type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver" 	 
 		url="jdbc:oracle:thin:@192.168.99.100:1521:xe" 
 		maxActive="20" maxIdle="10" maxWait="-1" 
