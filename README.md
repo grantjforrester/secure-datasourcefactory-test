@@ -17,3 +17,13 @@ The folder [/docker](docker) contains a number of Docker files for creating diff
 
 * Postgres 9.6
 * Oracle 12c
+
+
+Test Tools
+----------
+
+You can test the sample application and configuration using the Apache benchmarking tool [ab](https://httpd.apache.org/docs/2.4/programs/ab.html). For example,
+
+    $ ab -n 100000 -c 20 http://localhost:8080/secure-datasourcefactory-test/hello
+    
+would send 100000 requests to the application running on `localhost` (and on to the database) with a currency of 20 clients. 
