@@ -22,31 +22,30 @@ public class HelloServlet extends HttpServlet {
 	
 	private static final String DATASOURCE_CONTEXT = "java:comp/env/jdbc/mydatabase";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		DataSource ds = getDataSource();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+		DataSource ds = getJNDIDataSource();
 		String greeting = getGreeting(ds);
 		response.getWriter().append(greeting);
-	}
-
-	private DataSource getDataSource() throws ServletException {
-		try {
-			Context initialContext = new InitialContext();
-			DataSource datasource = (DataSource) initialContext.lookup(DATASOURCE_CONTEXT);
-			return datasource;
-		} catch (NamingException e) {
+		} catch (NamingException | SQLException e) {
 			throw new ServletException(e);
 		}
 	}
+
+	private DataSource getJNDIDataSource() throws NamingException {
+		Context initialContext = new InitialContext();
+		DataSource datasource = (DataSource) initialContext.lookup(DATASOURCE_CONTEXT);
+		return datasource;
+	}
 	
-	private String getGreeting(DataSource ds) throws ServletException {
+	private String getGreeting(DataSource ds) throws SQLException {
 		try (Connection conn = ds.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement("select * from greeting where id = 0");
-			ResultSet rs = ps.executeQuery();
-			rs.next();
-			return rs.getString(2);
-		} catch (SQLException e) {
-			throw new ServletException(e);
+			try (PreparedStatement ps = conn.prepareStatement("select * from greeting where id = 0")) {
+				try (ResultSet rs = ps.executeQuery()) {
+					rs.next();
+					return rs.getString(2);
+				}
+			}
 		}
 	}
 
